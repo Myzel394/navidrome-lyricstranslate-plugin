@@ -1,6 +1,6 @@
 # Lyricstranslate Lyrics Plugin for Navidrome
 
-Scrapes lyrics from Lyricstranslate and provides them to your Navidrome instance. Scraping is not implemented yet; the plugin currently returns constant stub lyrics.
+Scrapes lyrics from Lyricstranslate and provides them to your Navidrome instance.
 
 ## Installation
 
@@ -11,7 +11,7 @@ Scrapes lyrics from Lyricstranslate and provides them to your Navidrome instance
 
 It's recommended to set this plugin's priority to the lowest position, as scraping is less reliable than using an API.
 
-**Lyricstranslate scraping is not implemented yet. The plugin currently returns stub lyrics.**
+**Lyricstranslate may change its HTML at any time, so this plugin can break when the website changes.**
 
 ## Reporting Issues
 

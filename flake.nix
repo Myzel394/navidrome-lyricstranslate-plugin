@@ -23,7 +23,7 @@
 
           src = ./plugin;
 
-          vendorHash = "sha256-yFPWnIFMB9NeCDu3Km5WwfG3iLpnh/gBUa9dh8+QHFY=";
+          vendorHash = "sha256-Kuly/6qet7mnSaomO+ICJNJnu6Oeaf7SChPlEgop7xI=";
 
           nativeBuildInputs = [ pkgs.tinygo ];
 
