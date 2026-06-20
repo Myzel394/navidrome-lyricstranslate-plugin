@@ -6,10 +6,14 @@ import (
 	"github.com/navidrome/navidrome/plugins/pdk/go/pdk"
 )
 
-func LogInfof(format string, args ...any) {
+var LogInfof = logInfof
+
+var LogErrorf = logErrorf
+
+func logInfof(format string, args ...any) {
 	pdk.Log(pdk.LogInfo, fmt.Sprintf(LogPrefix+format, args...))
 }
 
-func LogErrorf(format string, args ...any) {
+func logErrorf(format string, args ...any) {
 	pdk.Log(pdk.LogError, fmt.Sprintf(LogPrefix+format, args...))
 }

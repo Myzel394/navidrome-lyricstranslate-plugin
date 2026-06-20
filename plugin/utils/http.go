@@ -6,7 +6,9 @@ import (
 	"github.com/navidrome/navidrome/plugins/pdk/go/pdk"
 )
 
-func DoGetRequest(endpoint string) ([]byte, error) {
+var DoGetRequest = doGetRequest
+
+func doGetRequest(endpoint string) ([]byte, error) {
 	userAgent := ConfigUserAgent()
 	httpAcceptHeader := ConfigSearchHTTPAcceptHeader()
 
