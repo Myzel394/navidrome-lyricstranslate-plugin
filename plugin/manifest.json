@@ -1,0 +1,54 @@
+{
+  "name": "Lyricstranslate Plugin",
+  "author": "Myzel394",
+  "version": "0.1.0",
+  "description": "Scrape lyrics from Lyricstranslate",
+  "website": "https://git.nerdvpn.de/Myzel394/navidrome-lyricstranslate-plugin",
+  "permissions": {
+    "http": {
+      "reason": "To search & fetch your lyrics from Lyricstranslate",
+      "requiredHosts": [
+        "lyricstranslate.com"
+      ]
+    }
+  },
+  "config": {
+    "schema": {
+      "type": "object",
+      "title": "Lyricstranslate Plugin Settings",
+      "properties": {
+        "lyricstranslate_user_agent": {
+          "type": "string",
+          "title": "User-Agent",
+          "default": "Mozilla/5.0 (iPhone; CPU iPhone OS 17_7 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.3 Mobile/15E148 Safari/604.1",
+          "description": "User-Agent header sent to Lyricstranslate. The default mimics mobile Safari."
+        },
+        "lyricstranslate_http_accept": {
+          "type": "string",
+          "title": "HTTP Accept Header",
+          "default": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
+          "description": "Accept header sent to Lyricstranslate."
+        }
+      }
+    },
+    "uiSchema": {
+      "type": "VerticalLayout",
+      "elements": [
+        {
+          "type": "Group",
+          "label": "Advanced",
+          "elements": [
+            {
+              "type": "Control",
+              "scope": "#/properties/lyricstranslate_user_agent"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/lyricstranslate_http_accept"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}
