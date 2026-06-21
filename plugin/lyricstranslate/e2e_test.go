@@ -10,6 +10,7 @@ import (
 
 	"github.com/Myzel394/navidrome-lyricstranslate-plugin/plugin/utils"
 	"github.com/navidrome/navidrome/plugins/pdk/go/lyrics"
+	"github.com/navidrome/navidrome/plugins/pdk/go/pdk"
 )
 
 func TestFetchLyricsNeverGonnaGiveYouUpEndToEnd(t *testing.T) {
@@ -50,10 +51,13 @@ func mockHTTP(t *testing.T) {
 	originalDoGetRequest := utils.DoGetRequest
 	originalLogInfof := utils.LogInfof
 	originalLogErrorf := utils.LogErrorf
+	pdk.PDKMock.On("GetConfig", utils.ConfigKeyLevenshteinThreshold).Return("", false)
 	t.Cleanup(func() {
 		utils.DoGetRequest = originalDoGetRequest
 		utils.LogInfof = originalLogInfof
 		utils.LogErrorf = originalLogErrorf
+		pdk.PDKMock.ExpectedCalls = nil
+		pdk.PDKMock.Calls = nil
 	})
 
 	utils.DoGetRequest = realGetRequest
