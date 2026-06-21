@@ -11,3 +11,5 @@ plugin/*.wasm
 plugin/*.ndp
 
 result
+plugin/vendor
+    
