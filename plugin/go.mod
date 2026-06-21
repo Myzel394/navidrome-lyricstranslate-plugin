@@ -4,6 +4,7 @@ go 1.25.0
 
 require (
 	github.com/asticode/go-astisub v0.40.0
+	github.com/mozillazg/go-unidecode v0.2.0
 	github.com/navidrome/navidrome/plugins/pdk/go v0.0.0-20260605180008-174621f2595a
 	golang.org/x/text v0.37.0
 )

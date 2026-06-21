@@ -11,9 +11,10 @@ import (
 )
 
 var (
-	bracketsRe   = regexp.MustCompile(`[\(\[\{][^\)\]\}]*[\)\]\}]`)
-	dashSuffixRe = regexp.MustCompile(`(?i)\s*-\s*(remaster(ed)?|single version|live|deluxe|edit|mix|version|radio edit|extended).*$`)
-	whitespaceRe = regexp.MustCompile(`\s+`)
+	bracketsRe       = regexp.MustCompile(`[\(\[\{][^\)\]\}]*[\)\]\}]`)
+	bracketContentRe = regexp.MustCompile(`[\(\[\{]([^\)\]\}]*)[\)\]\}]`)
+	dashSuffixRe     = regexp.MustCompile(`(?i)\s*-\s*(remaster(ed)?|single version|live|deluxe|edit|mix|version|radio edit|extended).*$`)
+	whitespaceRe     = regexp.MustCompile(`\s+`)
 )
 
 func normalize(s string) string {

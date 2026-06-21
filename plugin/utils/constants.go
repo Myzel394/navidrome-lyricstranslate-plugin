@@ -16,6 +16,6 @@ const (
 
 const (
 	LyricstranslateBaseURL      = "https://lyricstranslate.com"
-	LyricstranslateSearchURL    = LyricstranslateBaseURL + "/en/site-search?query=%s"
+	LyricstranslateSearchURL    = LyricstranslateBaseURL + "/en/songs/0/%s/%s/0/none/0?order=relevance"
 	LyricstranslateSubtitlesURL = LyricstranslateBaseURL + "/en/callback/subtitles/%s/%s"
 )

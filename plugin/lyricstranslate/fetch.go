@@ -20,7 +20,7 @@ type subtitlesResponse struct {
 }
 
 var (
-	songBodyRe       = regexp.MustCompile(`(?s)<div class="translate__text[^"]*" id="song-body">(.*?)<div id="song-transliteration">`)
+	songBodyRe       = regexp.MustCompile(`(?s)<div .*? id="song-body">(.*?)<div id="song-transliteration">`)
 	subtitlesAttrsRe = regexp.MustCompile(`(?s)<span class=['"]video-icon-player[^'"]*['"][^>]*\bnid=['"]([^'"]+)['"][^>]*\byoutube=['"]([^'"]+)['"][^>]*\bcc=['"]1['"]`)
 	adBlockRe        = regexp.MustCompile(`(?s)<div id="adngin-[^>]*>.*?</div>`)
 	lineBreakTagRe   = regexp.MustCompile(`(?i)<br\s*/?>`)
