@@ -27,7 +27,18 @@ func matchVariants(s string, romanized bool) []string {
 			variants = append(variants, match[1])
 		}
 	}
+	return normalizeVariants(variants, romanized)
+}
 
+func artistMatchVariants(s string, romanized bool) []string {
+	variants := []string{s, bracketsRe.ReplaceAllString(s, " ")}
+	for _, part := range artistJoinersRe.Split(s, -1) {
+		variants = append(variants, part)
+	}
+	return normalizeVariants(variants, romanized)
+}
+
+func normalizeVariants(variants []string, romanized bool) []string {
 	seen := make(map[string]struct{}, len(variants))
 	normalized := make([]string, 0, len(variants))
 	for _, variant := range variants {

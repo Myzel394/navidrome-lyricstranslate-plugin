@@ -72,7 +72,7 @@ func pickBestMatchWith(hits []Song, normArtist, normTitle string, romanized bool
 	var bestScore float64
 
 	for _, hit := range hits {
-		artistRatio := bestRatio(normArtist, matchVariants(hit.Artist, romanized))
+		artistRatio := bestRatio(normArtist, artistMatchVariants(hit.Artist, romanized))
 		titleRatio := bestRatio(normTitle, matchVariants(hit.Title, romanized))
 		if artistRatio < matchThreshold || titleRatio < matchThreshold {
 			continue

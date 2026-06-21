@@ -14,6 +14,7 @@ var (
 	bracketsRe       = regexp.MustCompile(`[\(\[\{][^\)\]\}]*[\)\]\}]`)
 	bracketContentRe = regexp.MustCompile(`[\(\[\{]([^\)\]\}]*)[\)\]\}]`)
 	dashSuffixRe     = regexp.MustCompile(`(?i)\s*-\s*(remaster(ed)?|single version|live|deluxe|edit|mix|version|radio edit|extended).*$`)
+	artistJoinersRe  = regexp.MustCompile(`(?i)\s*(?:&|/|,|\band\b|\bfeat\.?\b|\bft\.?\b|\bwith\b|\bx\b)\s*`)
 	whitespaceRe     = regexp.MustCompile(`\s+`)
 )
 
