@@ -1,6 +1,8 @@
 package utils
 
 import (
+	"strconv"
+
 	"github.com/navidrome/navidrome/plugins/pdk/go/pdk"
 )
 
@@ -18,4 +20,13 @@ func ConfigUserAgent() string {
 
 func ConfigSearchHTTPAcceptHeader() string {
 	return getConfigString(ConfigKeyHTTPAccept, DefaultHTTPAccept)
+}
+
+func ConfigLevenshteinThreshold() float64 {
+	v := getConfigString(ConfigKeyLevenshteinThreshold, strconv.FormatFloat(DefaultLevenshteinThreshold, 'f', -1, 64))
+	threshold, err := strconv.ParseFloat(v, 64)
+	if err != nil || threshold <= 0 || threshold > 1 {
+		return DefaultLevenshteinThreshold
+	}
+	return threshold
 }

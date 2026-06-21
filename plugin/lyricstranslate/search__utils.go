@@ -35,6 +35,11 @@ func artistMatchVariants(s string, romanized bool) []string {
 	for _, part := range artistJoinersRe.Split(s, -1) {
 		variants = append(variants, part)
 	}
+	for _, part := range strings.Fields(s) {
+		if len([]rune(part)) > 3 {
+			variants = append(variants, part)
+		}
+	}
 	return normalizeVariants(variants, romanized)
 }
 

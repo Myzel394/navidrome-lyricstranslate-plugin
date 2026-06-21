@@ -28,6 +28,12 @@
           "title": "HTTP Accept Header",
           "default": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,*/*;q=0.8",
           "description": "Accept header sent to Lyricstranslate."
+        },
+        "lyricstranslate_search_levenshtein_threshold": {
+          "type": "string",
+          "title": "Match Threshold",
+          "default": "0.75",
+          "description": "Minimum Levenshtein similarity (0-1) required to accept a Lyricstranslate result as a match."
         }
       }
     },
@@ -45,6 +51,10 @@
             {
               "type": "Control",
               "scope": "#/properties/lyricstranslate_http_accept"
+            },
+            {
+              "type": "Control",
+              "scope": "#/properties/lyricstranslate_search_levenshtein_threshold"
             }
           ]
         }

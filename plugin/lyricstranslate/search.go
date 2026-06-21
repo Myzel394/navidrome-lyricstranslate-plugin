@@ -10,8 +10,6 @@ import (
 	"github.com/navidrome/navidrome/plugins/pdk/go/lyrics"
 )
 
-const matchThreshold = 0.85
-
 var (
 	searchItemRe = regexp.MustCompile(`(?s)<div class="table__trow">.*?<a href="([^"]+)" class="title-link">\s*<span class="title-text">(.*?)</span></a>.*?<span class="block-1-table__author">\s*<span class="text">(.*?)</span>\s*</span>.*?<div class="table__langs">(.*?)</div>`)
 	tagsRe       = regexp.MustCompile(`(?s)<[^>]+>`)
@@ -33,7 +31,7 @@ func searchForTrack(input lyrics.GetLyricsRequest) (*Song, error) {
 		return nil, fmt.Errorf("failed to do lyricstranslate search request for query %s; Error: %v", query, err)
 	}
 
-	return pickBestMatch(extractSearchHits(string(body)), normArtist, normTitle), nil
+	return pickBestMatch(extractSearchHits(string(body)), normArtist, normTitle, utils.ConfigLevenshteinThreshold()), nil
 }
 
 func extractSearchHits(page string) []Song {
@@ -60,14 +58,14 @@ func extractSearchHits(page string) []Song {
 	return hits
 }
 
-func pickBestMatch(hits []Song, normArtist, normTitle string) *Song {
-	if bestSong := pickBestMatchWith(hits, normArtist, normTitle, false); bestSong != nil {
+func pickBestMatch(hits []Song, normArtist, normTitle string, matchThreshold float64) *Song {
+	if bestSong := pickBestMatchWith(hits, normArtist, normTitle, false, matchThreshold); bestSong != nil {
 		return bestSong
 	}
-	return pickBestMatchWith(hits, romanize(normArtist), romanize(normTitle), true)
+	return pickBestMatchWith(hits, romanize(normArtist), romanize(normTitle), true, matchThreshold)
 }
 
-func pickBestMatchWith(hits []Song, normArtist, normTitle string, romanized bool) *Song {
+func pickBestMatchWith(hits []Song, normArtist, normTitle string, romanized bool, matchThreshold float64) *Song {
 	var bestSong *Song
 	var bestScore float64
 
