@@ -1,7 +1,6 @@
-name: Test
+name: E2E test
 
 on:
-  pull_request:
   schedule:
     - cron: "24 4 * * *"
   workflow_dispatch:
@@ -20,5 +19,5 @@ jobs:
           extra_nix_config: |
             experimental-features = nix-command flakes
 
-      - name: Run tests
-        run: nix develop --command just test
+      - name: Run lyricstranslate Never Gonna Give You Up E2E test
+        run: nix develop --command just test-lyricstranslate-e2e-never-gonna-give-you-up

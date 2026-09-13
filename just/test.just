@@ -3,7 +3,12 @@
 # Run Go tests.
 [group('test'), working-directory: 'plugin']
 test:
-    go test ./...
+    go test ./... -skip '^TestFetchLyricsNeverGonnaGiveYouUpEndToEnd$'
+
+# Run the lyrics translate live E2E fixture test.
+[group('test'), working-directory: 'plugin']
+test-lyricstranslate-e2e-never-gonna-give-you-up:
+    go test ./lyricstranslate -run '^TestFetchLyricsNeverGonnaGiveYouUpEndToEnd$'
 
 # Fetch lyrics for a random song via Navidrome SubSonic.
 [group('test')]
