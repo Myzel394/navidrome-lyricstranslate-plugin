@@ -1,7 +1,7 @@
 {
   "name": "Lyricstranslate Plugin",
   "author": "Myzel394",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Scrape lyrics from Lyricstranslate",
   "website": "https://git.nerdvpn.de/Myzel394/navidrome-lyricstranslate-plugin",
   "permissions": {
